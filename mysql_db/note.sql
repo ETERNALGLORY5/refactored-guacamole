@@ -459,4 +459,28 @@ select * from students where name like'%t';
 +----+---------+-----------+------+
 5 rows in set (0.00 sec)
 
+-- create foreign key
+--while creating the table
 
+create table laptops(lid int primary key,model varchar(100) not null, price int);
+-- foreign key
+create table laptops(lid int primary key,model varchar(100) not null, price int,sid int, FOREIGN KEY(sid) REFERENCES go_go([main_table_primary_key]));
+
+
+-- constraints
+
+ALTER TABLE [table_name] ADD FOREIGN KEY (this.COL_name) REFERENCES [parent_table_name](parent_primary_key_col);
+
+ALTER TABLE[table_name] ADD constraints FK_go_go324 FOREIGN KEY(this_col_name)REFERENCES[parent_table_name](parent_primary_key_col);
+
+alter table laptops ADD sId int;
+alter table laptops ADD foreign KEY(sId) REFERENCES go_go(id);
+desc laptops;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| lid   | int          | NO   | PRI | NULL    |       |
+| model | varchar(100) | NO   |     | NULL    |       |
+| price | int          | YES  |     | NULL    |       |
+| sId   | int          | YES  | MUL | NULL    |       |
++-------+--------------+------+-----+---------+-------+
